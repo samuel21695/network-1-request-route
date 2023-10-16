@@ -21,6 +21,14 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.end(data);
     });
+  } else if (req.url === '/css/style.css' && req.method === 'GET') {
+    fs.readFile('./static/css/style.css', 'utf8', (err, data) => {
+      if (err) {
+        serverErrorlog();
+      }
+      res.writeeHead(200, { 'Content-Type': 'text/css'});
+      res.end(data);
+    });
   }
 });
 

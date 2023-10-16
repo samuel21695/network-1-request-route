@@ -10,6 +10,18 @@ const server = http.createServer((req, res) => {
   }
 
   console.log("어떤 요청이 들어오는지 확인", "url -> ", req.url, "method ->", req.method);
+  // 라우팅 처리 제작 두개의 요청 데이터를 확인해야 한다.
+  // 1. 요청 URL
+  // 2. 요청 메서드
+  if (req.url ==- '/' && req.method === 'GET') {
+    fs.readFile('./static/index.html', 'utf8', (err, data) => {
+      if (err) {
+        serverErrorlog();
+      }
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.end(data);
+    });
+  }
 });
 
 const PORT = 3000;

@@ -26,7 +26,7 @@ const server = http.createServer((req, res) => {
       if (err) {
         serverErrorlog();
       }
-      res.writeeHead(200, { 'Content-Type': 'text/css'});
+      res.writeHead(200, { 'Content-Type': 'text/css'});
       res.end(data);
     });
   } else if (req.url === '/js/index,js' && req.method === 'GET') {

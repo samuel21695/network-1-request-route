@@ -29,6 +29,17 @@ const server = http.createServer((req, res) => {
       res.writeeHead(200, { 'Content-Type': 'text/css'});
       res.end(data);
     });
+  } else if (req.url === '/js/index,js' && req.method === 'GET') {
+    fs.readFile('./static/js/index.js', 'utf8', (err, data) => {
+      if (err) {
+        serverErrorlog();
+      }
+      res.writeHead(200, { 'Content-Type': 'application/javascript'});
+      res.end(data);
+    });
+  } else {
+    res.writeHead(404)
+    res.end('Not Found');
   }
 });
 
